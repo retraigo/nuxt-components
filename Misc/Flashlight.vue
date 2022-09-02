@@ -14,26 +14,48 @@
           class="movingPointer"
           ref="movingthing"
           :style="{
-            left: coordinates.x + 'px',
-            top: coordinates.y - 40 + 'px',
+            left: coordinates.x - 60 + 'px',
+            top: coordinates.y - 120 + 'px',
           }"
         />
+        <div class = "midtext">
+          <span>ABYSS</span>
+        </div>
       </div>
     </div>
   </div>
 </template>
 <style scoped>
+  .midtext {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+    color: black;
+    pointer-events: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: 600;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    widows: 100%;
+    min-height: 100vh;
+    text-align: center;
+    z-index: 50;
+  }
 .movingPointer {
     background-image: url(/cover-no-text.png);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
     position: absolute;
-    width: 30rem;
-    height: 30rem;
-    filter: blur(16px);
+    width: 420px;
+    height: 420px;
+    filter: blur(32px);
     border-radius: 9999px;
-    background-color: white;
     z-index: 40;
     opacity: 50;
 }
@@ -42,7 +64,6 @@
     background-color: #1d001600;
     position: relative;
     overflow: hidden;
-    cursor: none;
 }
 .main-content {
     min-height: 100vh;
@@ -58,7 +79,7 @@
 </style>
 <script setup lang="ts">
 const coordinates = ref<{x: number, y: number}>({ x: 0, y: 0 });
-function movedaro(e) {
+function movedaro(e: MouseEvent) {
   coordinates.value.x = e.pageX - 100;
   coordinates.value.y = e.pageY;
 }
